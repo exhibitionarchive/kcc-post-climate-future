@@ -406,6 +406,21 @@ h2 {
   outline-offset: 3px;
 }
 
+.ig-link {
+  margin: -4px 0 12px;
+  font-size: 14px;
+}
+
+.ig-link a {
+  color: var(--accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ig-link a:hover {
+  color: var(--text);
+}
+
 .card p {
   color: var(--muted);
   font-size: 15.5px;

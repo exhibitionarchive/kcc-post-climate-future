@@ -169,6 +169,12 @@ h1 {
   line-height: 1.75;
 }
 
+.page-hero.about-content > p {
+  max-width: 980px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 .page-hero > p:first-of-type {
   margin-top: 32px;
 }
@@ -183,6 +189,13 @@ h1 {
 
 .page-hero > p:last-child {
   margin-bottom: 0;
+}
+
+.about-banner {
+  width: min(980px, 100%);
+  height: auto;
+  object-fit: contain;
+  margin: 34px 0 38px;
 }
 
 .hero-actions {
@@ -398,6 +411,10 @@ h2 {
   font-size: 15.5px;
 }
 
+.card .card-link {
+  margin-top: 14px;
+}
+
 .meta {
   display: inline-block;
   margin-bottom: 14px;
@@ -457,6 +474,29 @@ h2 {
   background: rgba(255, 255, 255, 0.58);
   color: var(--muted);
   font-size: 15px;
+}
+
+.empty-state {
+  min-height: 360px;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+  gap: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 48px 22px;
+}
+
+.empty-state h2 {
+  max-width: 640px;
+}
+
+.empty-state p {
+  max-width: 560px;
+  color: var(--muted);
+  font-size: 17px;
 }
 
 footer {

@@ -6,7 +6,25 @@
   <title>Speculative Visions of a Post-Climate Future</title>
    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body>
+<body class="is-loading">
+<div class="loading-screen" id="loadingScreen" aria-label="Loading exhibition homepage">
+  <div class="loading-inner">
+    <span class="meta">Locating Post-Climate Future</span>
+    <div class="coordinate-panel" aria-live="polite">
+      <div class="coordinate-row">
+        <span>Seoul</span>
+        <strong id="seoulLat">+00°00'00"N</strong>
+        <strong id="seoulLng">+000°00'00"E</strong>
+      </div>
+      <div class="coordinate-row">
+        <span>Hong Kong</span>
+        <strong id="hkLat">+00.0000° N</strong>
+        <strong id="hkLng">+000.0000° E</strong>
+      </div>
+    </div>
+    <div class="loading-line"><span></span></div>
+  </div>
+</div>
 <header>
   <div class="site-wrap nav">
     <a class="brand" href="index.html">Post Climate Future 氣候未來式</a>
@@ -88,5 +106,57 @@
 </p>
   </div>
 </footer>
+<script>
+  (() => {
+    const duration = 1300;
+    const start = performance.now();
+    const loadingScreen = document.getElementById("loadingScreen");
+    const seoulLat = document.getElementById("seoulLat");
+    const seoulLng = document.getElementById("seoulLng");
+    const hkLat = document.getElementById("hkLat");
+    const hkLng = document.getElementById("hkLng");
+
+    const targets = {
+      seoulLat: 37 + 34 / 60,
+      seoulLng: 126 + 58 / 60 + 41 / 3600,
+      hkLat: 22.3193,
+      hkLng: 114.1694
+    };
+
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+    const pad = (value, size) => String(value).padStart(size, "0");
+
+    const formatDms = (value, lat) => {
+      const degrees = Math.floor(value);
+      const minutesFloat = (value - degrees) * 60;
+      const minutes = Math.floor(minutesFloat);
+      const seconds = Math.round((minutesFloat - minutes) * 60);
+      const hemisphere = lat ? "N" : "E";
+      return `+${pad(degrees, lat ? 2 : 3)}°${pad(minutes, 2)}'${pad(seconds, 2)}"${hemisphere}`;
+    };
+
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = easeOutCubic(progress);
+
+      seoulLat.textContent = formatDms(targets.seoulLat * eased, true);
+      seoulLng.textContent = formatDms(targets.seoulLng * eased, false);
+      hkLat.textContent = `+${(targets.hkLat * eased).toFixed(4)}° N`;
+      hkLng.textContent = `+${(targets.hkLng * eased).toFixed(4)}° E`;
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+        return;
+      }
+
+      setTimeout(() => {
+        loadingScreen.classList.add("is-hidden");
+        document.body.classList.remove("is-loading");
+      }, 180);
+    };
+
+    requestAnimationFrame(tick);
+  })();
+</script>
 </body>
 </html>

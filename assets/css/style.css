@@ -650,6 +650,90 @@ footer {
   outline-offset: 8px;
 }
 
+.cultural-year {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cultural-logo-button {
+  display: inline-flex;
+  align-items: center;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.cultural-logo-button:hover {
+  opacity: 0.72;
+  transform: translateY(-1px);
+}
+
+.cultural-logo-button:focus-visible {
+  outline: 2px solid var(--accent-dark);
+  outline-offset: 8px;
+}
+
+.cultural-year-card {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 18px);
+  z-index: 30;
+  width: min(360px, calc(100vw - 36px));
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 18px 44px rgba(23, 33, 28, 0.12);
+  color: var(--muted);
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+}
+
+.cultural-year-card::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 12px;
+  height: 12px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.92);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.cultural-year:hover .cultural-year-card,
+.cultural-year.is-open .cultural-year-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.cultural-year-card h3 {
+  margin-bottom: 8px;
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.cultural-year-cn {
+  margin-bottom: 12px;
+  color: var(--accent-dark);
+  font-weight: 700;
+}
+
+.cultural-year-card p {
+  font-size: 14px;
+  line-height: 1.62;
+}
+
 .footer-logo {
   max-width: 136px;
   max-height: 54px;

@@ -627,6 +627,196 @@ h2 {
   font-size: 17px;
 }
 
+.documentation-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.78fr) minmax(320px, 1.22fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+.documentation-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card);
+  padding: 22px;
+  backdrop-filter: blur(12px);
+}
+
+.documentation-card h2 {
+  margin-bottom: 18px;
+  font-size: clamp(24px, 3vw, 38px);
+}
+
+.video-card {
+  display: grid;
+}
+
+.video-placeholder {
+  min-height: 430px;
+  display: grid;
+  place-content: center;
+  gap: 14px;
+  padding: 28px;
+  border: 1px dashed rgba(23, 33, 28, 0.22);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(120, 184, 167, 0.18), rgba(255, 255, 255, 0.62)),
+    repeating-linear-gradient(45deg, rgba(23, 33, 28, 0.035) 0 2px, transparent 2px 12px);
+  text-align: center;
+}
+
+.video-placeholder h2 {
+  margin: 0;
+}
+
+.video-placeholder p,
+.documentation-credits {
+  color: var(--muted);
+}
+
+.photo-rail {
+  display: grid;
+  grid-auto-columns: minmax(260px, 74%);
+  grid-auto-flow: column;
+  gap: 16px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 2px 2px 14px;
+  scroll-snap-type: x mandatory;
+}
+
+.photo-rail figure {
+  display: grid;
+  gap: 10px;
+  scroll-snap-align: start;
+}
+
+.photo-zoom-button {
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.photo-zoom-button:focus-visible {
+  outline: 2px solid var(--accent-dark);
+  outline-offset: 4px;
+}
+
+.photo-zoom-button:hover img {
+  filter: saturate(1.05) contrast(1.02);
+  transform: translateY(-2px);
+}
+
+.photo-rail img {
+  aspect-ratio: 4 / 3;
+  height: auto;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.58);
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.photo-rail figcaption {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.documentation-credits {
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+.photo-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 56px;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+  padding: clamp(18px, 4vw, 42px);
+  background: rgba(23, 33, 28, 0.78);
+  backdrop-filter: blur(18px);
+}
+
+.photo-lightbox[hidden] {
+  display: none;
+}
+
+.photo-lightbox figure {
+  grid-column: 2;
+  grid-row: 2;
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+  min-width: 0;
+}
+
+.photo-lightbox img {
+  width: auto;
+  max-width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.photo-lightbox figcaption {
+  max-width: 780px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.lightbox-close,
+.lightbox-nav {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox-close:hover,
+.lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.24);
+  transform: translateY(-1px);
+}
+
+.lightbox-close:focus-visible,
+.lightbox-nav:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+.lightbox-close {
+  grid-column: 2;
+  justify-self: end;
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.lightbox-nav {
+  grid-row: 2;
+  width: 48px;
+  height: 72px;
+  font-size: 38px;
+  line-height: 1;
+}
+
+.lightbox-prev {
+  grid-column: 1;
+}
+
+.lightbox-next {
+  grid-column: 3;
+}
+
 footer {
   padding: 54px 0 70px;
   color: var(--muted);
@@ -777,10 +967,48 @@ footer {
   .section-head,
   .feature-layout,
   .artwork-detail,
+  .documentation-grid,
   .grid,
   .grid.two,
   .info-row {
     grid-template-columns: 1fr;
+  }
+
+  .video-placeholder {
+    min-height: 300px;
+  }
+
+  .photo-rail {
+    grid-auto-columns: minmax(240px, 86%);
+  }
+
+  .photo-lightbox {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: 14px;
+  }
+
+  .photo-lightbox figure {
+    grid-column: 1 / -1;
+  }
+
+  .lightbox-close {
+    grid-column: 1 / -1;
+  }
+
+  .lightbox-nav {
+    grid-row: 3;
+    width: 100%;
+    height: 48px;
+    font-size: 28px;
+  }
+
+  .lightbox-prev {
+    grid-column: 1;
+  }
+
+  .lightbox-next {
+    grid-column: 2;
   }
 
   section {

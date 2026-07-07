@@ -629,8 +629,8 @@ h2 {
 
 .documentation-grid {
   display: grid;
-  grid-template-columns: minmax(260px, 0.78fr) minmax(320px, 1.22fr);
-  gap: 22px;
+  grid-template-columns: 1fr;
+  gap: 32px;
   align-items: stretch;
 }
 
@@ -638,7 +638,7 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--card);
-  padding: 22px;
+  padding: 28px;
   backdrop-filter: blur(12px);
 }
 

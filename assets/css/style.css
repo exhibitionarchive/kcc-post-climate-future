@@ -651,25 +651,19 @@ h2 {
   display: grid;
 }
 
-.video-placeholder {
-  min-height: 430px;
-  display: grid;
-  place-content: center;
-  gap: 14px;
-  padding: 28px;
-  border: 1px dashed rgba(23, 33, 28, 0.22);
+.video-embed {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
   border-radius: 8px;
-  background:
-    linear-gradient(135deg, rgba(120, 184, 167, 0.18), rgba(255, 255, 255, 0.62)),
-    repeating-linear-gradient(45deg, rgba(23, 33, 28, 0.035) 0 2px, transparent 2px 12px);
-  text-align: center;
+  background: rgba(23, 33, 28, 0.08);
 }
 
-.video-placeholder h2 {
-  margin: 0;
+.video-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
-.video-placeholder p,
 .documentation-credits {
   color: var(--muted);
 }
@@ -972,10 +966,6 @@ footer {
   .grid.two,
   .info-row {
     grid-template-columns: 1fr;
-  }
-
-  .video-placeholder {
-    min-height: 300px;
   }
 
   .photo-rail {

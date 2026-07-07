@@ -628,9 +628,10 @@ h2 {
 }
 
 .documentation-grid {
+  width: min(900px, 100%);
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
+  gap: 24px;
   align-items: stretch;
 }
 
@@ -638,7 +639,7 @@ h2 {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--card);
-  padding: 28px;
+  padding: 22px;
   backdrop-filter: blur(12px);
 }
 

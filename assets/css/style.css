@@ -628,19 +628,15 @@ h2 {
 }
 
 .documentation-grid {
-  width: 72%;
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(18px, 2.2vw, 28px);
-  align-items: stretch;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(44px, 6vw, 72px);
+  align-items: start;
 }
 
 .documentation-card {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--card);
-  padding: clamp(16px, 2vw, 24px);
-  backdrop-filter: blur(12px);
+  min-width: 0;
 }
 
 .documentation-card h2 {
@@ -649,13 +645,13 @@ h2 {
 }
 
 .video-card {
-  display: grid;
+  display: block;
 }
 
 .video-embed {
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 0;
   background: rgba(23, 33, 28, 0.08);
 }
 
@@ -671,7 +667,7 @@ h2 {
 
 .photo-rail {
   display: grid;
-  grid-auto-columns: minmax(220px, 70%);
+  grid-auto-columns: minmax(260px, 74%);
   grid-auto-flow: column;
   gap: 16px;
   overflow-x: auto;
@@ -810,12 +806,6 @@ h2 {
 
 .lightbox-next {
   grid-column: 3;
-}
-
-@media (max-width: 1000px) and (min-width: 821px) {
-  .documentation-grid {
-    width: 84%;
-  }
 }
 
 footer {
@@ -965,10 +955,6 @@ footer {
     justify-content: flex-start;
   }
 
-  .documentation-grid {
-    width: 100%;
-  }
-
   .section-head,
   .feature-layout,
   .artwork-detail,
@@ -980,7 +966,7 @@ footer {
   }
 
   .photo-rail {
-    grid-auto-columns: minmax(220px, 88%);
+    grid-auto-columns: minmax(240px, 86%);
   }
 
   .photo-lightbox {

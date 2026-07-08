@@ -628,7 +628,7 @@ h2 {
 }
 
 .documentation-grid {
-  width: min(900px, 100%);
+  width: min(760px, 100%);
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
